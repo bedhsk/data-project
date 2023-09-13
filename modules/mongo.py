@@ -3,6 +3,7 @@ import pymongo
 
 class Mongo:
     def __init__(self) -> None:
+        # TODO ->> Modificar la DATABASE Y COLECTION para agregar datos
         MONGO_HOST = "localhost"
         MONGO_PORT = "27017"
         MONGO_TIME_OUT = 1000
@@ -26,6 +27,7 @@ class Mongo:
         except pymongo.errors.ConnectionFailure as connectionError:
             print("Error de conexión" + connectionError)
 
+    # TODO ->> Modificar esta sentencia para añadir datos
     def insert(self, customer_id: str, order_id: str, status_name: str):
         try:
             document = {
