@@ -13,7 +13,7 @@ class MariaDB:
         )
 
         if self.connection.is_connected():
-            print("connection succesfull")
+            print("mariadb_connection_succesfull")
 
         # Cursor para ejectuar consulta
             self.cursor = self.connection.cursor()
