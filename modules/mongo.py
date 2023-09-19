@@ -28,7 +28,7 @@ class Mongo:
             print("Error de conexión" + connectionError)
 
     # TODO ->> Modificar esta sentencia para añadir datos
-    def insert(self, id: int, sex: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: str):
+    def insert(self, id: int, sex: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: bool):
         try:
             document = {
                 "id": id,  # partition key
