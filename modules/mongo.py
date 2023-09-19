@@ -28,13 +28,22 @@ class Mongo:
             print("Error de conexión" + connectionError)
 
     # TODO ->> Modificar esta sentencia para añadir datos
-    def insert(self, customer_id: str, order_id: str, status_name: str):
+    def insert(self, id: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: str):
         try:
             document = {
-                "customer_id": customer_id,
-                "order_id": order_id,
-                "created_date": "hoy",
-                "status": status_name,
+                "id": id,  # partition key
+                "age": age,
+                "height": height,
+                "weight": weight,
+                "sight_left": sight_left,
+                "sight_right": sight_right,
+                "SBP": SBP,
+                "DBP": DBP,
+                "BLDS": BLDS,
+                "tot_chole": tot_chole,
+                "gamma_GTP": gamma_GTP,
+                "SMK_stat_type_cd": SMK_stat_type_cd,
+                "DRK_YN": DRK_YN,
             }
             self.collection.insert_one(document)
         except pymongo.errors.ConnectionFailure as connectionError:
