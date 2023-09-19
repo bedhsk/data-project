@@ -11,11 +11,12 @@ class Dynamo:
         )  # acceso a la tabla
 
     # TODO ->> Modificar esta sentencia para que encaje con la tabla
-    def insert(self, id: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: str):
+    def insert(self, id: int, sex: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: str):
         print("demo_insert")
         response = self.demo_table.put_item(
             Item={  # elementos de la tabla
                 "id": id,  # partition key
+                "sex": sex,
                 "age": age,
                 "height": height,
                 "weight": weight,
