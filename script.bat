@@ -1,3 +1,3 @@
 @echo off
-"python" index.py
+"python" D:\Github\data-project\index.py
 pause
