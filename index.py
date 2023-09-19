@@ -9,13 +9,13 @@ maria_base = MariaDB()
 mongo_base = Mongo()
 
 def get_data():
-    with open('data.csv', newline='') as data:
+    with open("C:\\Users\\brian\\code\python\\autoinsert\\data.csv", newline='') as data:
         lector = csv.reader(data, delimiter=';', quotechar='"')
         for i, row in enumerate(lector):
             # # !INSERT DATA MARIADB
-            maria_base.insert(i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])
+            maria_base.insert(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])
             # # !INSERT DATA DYNAMO
-            dynamo_base.insert(i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])
+            # dynamo_base.insert(i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])
             # # !INSERT DATA MONGODB
             mongo_base.insert(i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])
 

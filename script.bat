@@ -1,3 +1,3 @@
 @echo off
-"python" index.py
+"python" C:\Users\brian\code\python\autoinsert\index.py
 pause
