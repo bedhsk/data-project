@@ -11,14 +11,23 @@ class Dynamo:
         )  # acceso a la tabla
 
     # TODO ->> Modificar esta sentencia para que encaje con la tabla
-    def insert(self, customer_id: str, order_id: str, status_name: str):
+    def insert(self, id: str, age: int, height: int, weight: int, sight_left: float, sight_right: float, SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd:float, DRK_YN: str):
         print("demo_insert")
         response = self.demo_table.put_item(
             Item={  # elementos de la tabla
-                "customer_id": customer_id,  # partition key
-                "order_id": order_id,  # sort key
-                "status": status_name,
-                "created_date": datetime.now().isoformat(),
+                "id": id,  # partition key
+                "age": age,
+                "height": height,
+                "weight": weight,
+                "sight_left": sight_left,
+                "sight_right": sight_right,
+                "SBP": SBP,
+                "DBP": DBP,
+                "BLDS": BLDS,
+                "tot_chole": tot_chole,
+                "gamma_GTP": gamma_GTP,
+                "SMK_stat_type_cd": SMK_stat_type_cd,
+                "DRK_YN": DRK_YN,
             }
         )
         print(f"Insert response: {response}")
