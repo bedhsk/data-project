@@ -18,55 +18,15 @@ def get_data():
             lectura = int(documento.readline())
             if i > lectura:
                 # !INSERT DATA MARIADB
-                maria_base.insert(
-                    row[0],
-                    int(row[1]),
-                    int(row[2]),
-                    int(row[3]),
-                    float(row[4]),
-                    float(row[5]),
-                    float(row[6]),
-                    float(row[7]),
-                    float(row[8]),
-                    float(row[9]),
-                    float(row[10]),
-                    float(row[11]),
-                    row[12],
-                )
+                maria_base.insert(row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
+                    row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10]), float(row[11]), row[12])
                 # !INSERT DATA DYNAMO
-                dynamo_base.insert(
-                    i,
-                    row[0],
-                    int(row[1]),
-                    int(row[2]),
-                    int(row[3]),
-                    float(row[4]),
-                    float(row[5]),
-                    float(row[6]),
-                    float(row[7]),
-                    float(row[8]),
-                    float(row[9]),
-                    float(row[10]),
-                    float(row[11]),
-                    row[12],
-                )
+                dynamo_base.insert(i, row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
+                    row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10]), float(row[11]), row[12])
                 # !INSERT DATA MONGODB
-                mongo_base.insert(
-                    i,
-                    row[0],
-                    int(row[1]),
-                    int(row[2]),
-                    int(row[3]),
-                    float(row[4]),
-                    float(row[5]),
-                    float(row[6]),
-                    float(row[7]),
-                    float(row[8]),
-                    float(row[9]),
-                    float(row[10]),
-                    float(row[11]),
-                    row[12],
-                )
+                mongo_base.insert(i, row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
+                    row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10]), float(row[11]), row[12])
+
                 documento.close()
                 documento = open("cuenta.txt", "w", newline="")
                 documento.write(str(i))

@@ -15,22 +15,9 @@ class MariaDB:
             # Cursor para ejectuar consulta
             self.cursor = self.connection.cursor()
 
-    def insert(
-        self,
-        sex: str,
-        age: int,
-        height: int,
-        weight: int,
-        sight_left: float,
-        sight_right: float,
-        SBP: float,
-        DBP: float,
-        BLDS: float,
-        tot_chole: float,
-        gamma_GTP: float,
-        SMK_stat_type_cd: float,
-        DRK_YN: str,
-    ):
+    def insert(self, sex: str, age: int, height: int, weight: int, sight_left: float, sight_right: float,
+               SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd: float,
+               DRK_YN: str,):
         # !INSERT DATA MARIADB
         # TODO ->> Cambiar las sentencias de insert
         sql = "INSERT INTO Medidas (sex, Age, Height, Weight, SightLeft, SightRight, SBP, DBP, BLDS, Tot_Chole, GammaGTP, SMKStartTypeCd, DRK_YN) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"
