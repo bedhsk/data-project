@@ -4,7 +4,7 @@ from PIL import ImageTk, Image
 
 # Ventana de Menu
 ventana = tkinter.Tk()
-ventana.geometry("560x300")
+ventana.geometry("500x300")
 ventana.title("PROYECTO - ANÁLISIS DE DATOS")
 
 # Redimension de imagen
@@ -86,9 +86,9 @@ lbl1 = tkinter.Label(
 )
 lbl1.place(relx=0, rely=0, relwidth=1, relheight=0.1)
 
-boton1 = tkinter.Button(
+boton0 = tkinter.Button(
     ventana,
-    text="Cargar Datos",
+    text="Cargar\n Datos",
     font="helvetica 15",
     foreground="black",
     width=10,
@@ -96,11 +96,23 @@ boton1 = tkinter.Button(
     command=CargarDatos,
     bg="gold",
 )
-boton1.place(relx=0.1, rely=0.20, relwidth=0.35, relheight=0.25)
+boton0.place(relx=0.15, rely=0.20, relwidth=0.3, relheight=0.25)
+
+boton1 = tkinter.Button(
+    ventana,
+    text="Estadisticas",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=CargarDatos,
+    bg="gold",
+)
+boton1.place(relx=0.55, rely=0.20, relwidth=0.3, relheight=0.25)
 
 boton2 = tkinter.Button(
     ventana,
-    text="Mostrar Datos",
+    text="Datos\nMariaDB",
     font="helvetica 15",
     foreground="black",
     width=10,
@@ -108,6 +120,30 @@ boton2 = tkinter.Button(
     command=AbrirVentana2,
     bg="turquoise",
 )
-boton2.place(relx=0.1, rely=0.60, relwidth=0.35, relheight=0.25)
+boton2.place(relx=0.025, rely=0.60, relwidth=0.25, relheight=0.25)
+
+boton3 = tkinter.Button(
+    ventana,
+    text="Datos\nMongoDB",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=AbrirVentana2,
+    bg="turquoise",
+)
+boton3.place(relx=0.375, rely=0.60, relwidth=0.25, relheight=0.25)
+
+boton4 = tkinter.Button(
+    ventana,
+    text="Datos\nDynamoDB",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=AbrirVentana2,
+    bg="turquoise",
+)
+boton4.place(relx=0.725, rely=0.60, relwidth=0.25, relheight=0.25)
 
 ventana.mainloop()
