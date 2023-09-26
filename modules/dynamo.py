@@ -34,3 +34,23 @@ class Dynamo:
             }
         )
         print(f"Insert response: {response}")
+
+    def get_items(self) -> list:
+        item_list = []
+        dynamo_response = {'LastEvaluatedKey': False}
+
+        while 'LastEvaluatedKey' in dynamo_response:
+            if dynamo_response['LastEvaluatedKey']:
+                dynamo_response = self.demo_table.scan(
+                    ExclusiveStartKey=dynamo_response['LastEvaluatedKey']
+                )
+                # print(f'response-if: {dynamo_response}')
+            else:
+                dynamo_response = self.demo_table.scan()
+                # print(f'response-else: {dynamo_response}')
+
+            # agregar items
+            for i in dynamo_response['Items']:
+                item_list.append(i)
+
+        return item_list
