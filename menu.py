@@ -3,7 +3,8 @@ import os
 from PIL import ImageTk, Image
 from Ventana_mostrar import Ventana_mostrar
 from modules.mongo import Mongo
-from modules.mariadb import  MariaDB
+from modules.mariadb import MariaDB
+from modules.dynamo import Dynamo
 
 # Ventana de Menu
 ventana = tkinter.Tk()
@@ -19,23 +20,32 @@ labelima.place(relx=0, rely=0, relwidth=1, relheight=1)
 # Funciones
 def CargarDatos():
     print("Cargando Datos")
-
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("start script.bat")
 
+
 def MostrarDatosMongo():
     print("Mostrando Datos MongoDB")
-    ventana.destroy()
+    # ventana.destroy()
     ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos MongoDB")
     database = Mongo()
     database.mostrarDatos(ventana2.tabla)
 
+
 def MostrarDatosMaria():
     print("Mostrando Datos MariaDB")
-    ventana.destroy()
+    # ventana.destroy()
     ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos MariaDB")
     database = MariaDB()
     database.mostrarDatos(ventana2.tabla)
+
+
+def MostrarDatosDynamo():
+    print("Mostrando Datos DynamoDB")
+    # ventana.destroy
+    ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos DynamoDb")
+    database = Dynamo()
+    database.show_data(ventana2.tabla)
 
 
 def AbrirVentana2():
@@ -158,7 +168,7 @@ boton4 = tkinter.Button(
     foreground="black",
     width=10,
     height=3,
-    command=AbrirVentana2,
+    command=MostrarDatosDynamo,
     bg="turquoise",
 )
 boton4.place(relx=0.725, rely=0.60, relwidth=0.25, relheight=0.25)

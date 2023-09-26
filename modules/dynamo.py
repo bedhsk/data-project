@@ -44,13 +44,20 @@ class Dynamo:
                 dynamo_response = self.demo_table.scan(
                     ExclusiveStartKey=dynamo_response['LastEvaluatedKey']
                 )
-                # print(f'response-if: {dynamo_response}')
             else:
                 dynamo_response = self.demo_table.scan()
-                # print(f'response-else: {dynamo_response}')
 
             # agregar items
             for i in dynamo_response['Items']:
                 item_list.append(i)
 
         return item_list
+
+    def show_data(self, table):
+        for registro in self.get_items():
+            # print(registro)
+            table.insert("", 0, text=registro["id"], values=(registro["sex"], registro["age"], registro["height"],
+                                                             registro["weight"], registro["sight_left"], registro["sight_right"],
+                                                             registro["SBP"], registro["DBP"], registro["BLDS"],
+                                                             registro["tot_chole"], registro["gamma_GTP"], registro["SMK_stat_type_cd"],
+                                                             registro["DRK_YN"]))

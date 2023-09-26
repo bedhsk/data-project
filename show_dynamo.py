@@ -1,6 +1,5 @@
 import tkinter
 from tkinter import ttk
-from modules.mongo import Mongo
 from modules.dynamo import Dynamo
 
 database = Dynamo()

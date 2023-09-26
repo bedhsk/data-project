@@ -6,7 +6,7 @@ class MariaDB:
     def __init__(self) -> None:
         # TODO ->> Reemplazar database
         self.connection = mariadb.connect(
-            user="root", password="powerranger12", host="localhost", database="datos_medicos"
+            user="root", password="bbbbbbb7", host="localhost", database="datos_medicos"
         )
 
         if self.connection.is_connected():
@@ -45,8 +45,7 @@ class MariaDB:
         sql = "SELECT pa.id, pa.sex, pa.age, me.height, me.weight, me.sightleft, me.sightright, dm.sbp, dm.dbp, dm.blds, dm.Tot_Chole, dm.Gamma_GTP, dm.SMKStartTypeCd, dm.DRK_YN from datos_medicos.paciente as pa INNER JOIN datos_medicos.datosmedicos AS dm ON pa.id = dm.paciente_id INNER JOIN datos_medicos.medidas as me ON pa.id = me.paciente_id;"
         self.cursor.execute(sql)
         for registro in self.cursor:
-            tabla.insert("", 0, text= registro[0], values= (registro[1:]))
-        return self.cursor
+            tabla.insert("", 0, text=registro[0], values=(registro[1:]))
 
     def close_connections(self):
         # Cerrar el cursor y la conexión
