@@ -8,8 +8,8 @@ class Mongo:
         MONGO_PORT = "27017"
         MONGO_TIME_OUT = 1000
 
-        MONGO_DATABASE = "test"
-        MONGO_COLECTION = "autoinsert"
+        MONGO_DATABASE = "datos" #test
+        MONGO_COLECTION = "medidas" #autoinsert
 
         MONGO_URI = "mongodb://" + MONGO_HOST + ":" + MONGO_PORT + "/"
 

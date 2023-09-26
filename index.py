@@ -5,7 +5,7 @@ from modules.dynamo import Dynamo
 from modules.mariadb import MariaDB
 
 # dynamo_base = Dynamo()
-maria_base = MariaDB()
+#maria_base = MariaDB()
 mongo_base = Mongo()
 
 
@@ -18,8 +18,8 @@ def get_data():
             lectura = int(documento.readline())
             if i > lectura:
                 # !INSERT DATA MARIADB
-                maria_base.insert(row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
-                    row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10]), float(row[11]), row[12])
+                #maria_base.insert(row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
+                    #row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10]), float(row[11]), row[12])
 
                 # !INSERT DATA DYNAMO
                 #dynamo_base.insert(i, row[0], int(row[1]), int(row[2]), int(row[3]), float(row[4]), float(row[5]), float(
@@ -41,5 +41,5 @@ def get_data():
 get_data()
 
 # close connections
-maria_base.close_connections()
+#maria_base.close_connections()
 mongo_base.close_connection()

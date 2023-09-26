@@ -2,9 +2,11 @@ import tkinter
 from tkinter import ttk
 import os
 from PIL import ImageTk, Image
-from modules.mariadb import MariaDB
+#from modules.mariadb import MariaDB
+from modules.mongo import Mongo
 
-database = MariaDB()
+#database = MariaDB()
+mongo_base = Mongo()
 
 class Ventana_mostrar ():
     def __init__(self, ventana: tkinter.Tk, title: str) -> None:

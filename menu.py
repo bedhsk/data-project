@@ -5,16 +5,19 @@ from Ventana_mostrar import Ventana_mostrar
 from modules.mongo import Mongo
 from modules.mariadb import  MariaDB
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sn
+
 # Ventana de Menu
 ventana = tkinter.Tk()
-ventana.geometry("500x300")
+ventana.geometry("500x600")
 ventana.title("PROYECTO - ANÁLISIS DE DATOS")
 
 # Redimension de imagen
 imagen = ImageTk.PhotoImage(Image.open("img/code.jpg"))
 labelima = tkinter.Label(image=imagen)
 labelima.place(relx=0, rely=0, relwidth=1, relheight=1)
-
 
 # Funciones
 def CargarDatos():
@@ -36,6 +39,28 @@ def MostrarDatosMaria():
     ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos MariaDB")
     database = MariaDB()
     database.mostrarDatos(ventana2.tabla)
+
+def MostrarGraficas():
+    print("Mostrar Graficas")
+    ventana.destroy()
+    database = Mongo()
+
+    print('hola mundo')
+    data = pd.DataFrame(list(database.collection.find()))
+    sex_num = data[['sex','gamma_GTP','DRK_YN']]
+    resultado = sex_num.groupby(['sex','DRK_YN']).agg({'gamma_GTP': 'mean'}).reset_index()
+    tabla = sn.barplot(x= "sex", y="gamma_GTP", hue='DRK_YN', data=resultado)
+    plt.show()
+    print('ssssssssssssss')
+    marcador = ['x','*','.','|','_']
+    for segmento in range(4):
+      temp = data[data['SMK_stat_type_cd'] == segmento]
+      plt.scatter(temp.SBP, temp.tot_chole, marker=marcador[segmento], label = 'Cluster '+str(segmento))
+      plt.xlabel('SBP')
+      plt.ylabel('tot_chole')
+      plt.legend()
+    plt.show()
+    
 
 
 def AbrirVentana2():
@@ -162,5 +187,17 @@ boton4 = tkinter.Button(
     bg="turquoise",
 )
 boton4.place(relx=0.725, rely=0.60, relwidth=0.25, relheight=0.25)
+
+boton5 = tkinter.Button(
+    ventana,
+    text="Graficas",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=MostrarGraficas,
+    bg="turquoise",
+)
+boton5.place(relx=0.725, rely=0.90, relwidth=0.25, relheight=0.25)
 
 ventana.mainloop()
