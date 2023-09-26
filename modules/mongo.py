@@ -50,5 +50,14 @@ class Mongo:
         except pymongo.errors.ConnectionFailure as connectionError:
             print(connectionError)
 
+    def mostrarDatos(self, tabla):
+        for registro in self.collection.find():
+    #print(registro)
+            tabla.insert("", 0, text= registro["id"], values= (registro["sex"], registro["age"], registro["height"],
+                                                            registro["weight"], registro["sight_left"], registro["sight_right"],
+                                                            registro["SBP"], registro["DBP"], registro["BLDS"],
+                                                            registro["tot_chole"], registro["gamma_GTP"], registro["SMK_stat_type_cd"],
+                                                            registro["DRK_YN"]))
+
     def close_connection(self):
         self.client.close()

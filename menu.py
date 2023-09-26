@@ -1,6 +1,9 @@
 import tkinter
 import os
 from PIL import ImageTk, Image
+from Ventana_mostrar import Ventana_mostrar
+from modules.mongo import Mongo
+from modules.mariadb import  MariaDB
 
 # Ventana de Menu
 ventana = tkinter.Tk()
@@ -19,6 +22,20 @@ def CargarDatos():
 
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("start script.bat")
+
+def MostrarDatosMongo():
+    print("Mostrando Datos MongoDB")
+    ventana.destroy()
+    ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos MongoDB")
+    database = Mongo()
+    database.mostrarDatos(ventana2.tabla)
+
+def MostrarDatosMaria():
+    print("Mostrando Datos MariaDB")
+    ventana.destroy()
+    ventana2 = Ventana_mostrar(tkinter.Tk(), "Datos MariaDB")
+    database = MariaDB()
+    database.mostrarDatos(ventana2.tabla)
 
 
 def AbrirVentana2():
@@ -117,7 +134,7 @@ boton2 = tkinter.Button(
     foreground="black",
     width=10,
     height=3,
-    command=AbrirVentana2,
+    command=MostrarDatosMaria,
     bg="turquoise",
 )
 boton2.place(relx=0.025, rely=0.60, relwidth=0.25, relheight=0.25)
@@ -129,7 +146,7 @@ boton3 = tkinter.Button(
     foreground="black",
     width=10,
     height=3,
-    command=AbrirVentana2,
+    command=MostrarDatosMongo,
     bg="turquoise",
 )
 boton3.place(relx=0.375, rely=0.60, relwidth=0.25, relheight=0.25)
