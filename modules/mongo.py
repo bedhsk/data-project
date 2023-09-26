@@ -8,8 +8,8 @@ class Mongo:
         MONGO_PORT = "27017"
         MONGO_TIME_OUT = 1000
 
-        MONGO_DATABASE = "datos" #test
-        MONGO_COLECTION = "medidas" #autoinsert
+        MONGO_DATABASE = "test"  # test
+        MONGO_COLECTION = "autoinsert"  # autoinsert
 
         MONGO_URI = "mongodb://" + MONGO_HOST + ":" + MONGO_PORT + "/"
 
@@ -52,12 +52,12 @@ class Mongo:
 
     def mostrarDatos(self, tabla):
         for registro in self.collection.find():
-    #print(registro)
-            tabla.insert("", 0, text= registro["id"], values= (registro["sex"], registro["age"], registro["height"],
-                                                            registro["weight"], registro["sight_left"], registro["sight_right"],
-                                                            registro["SBP"], registro["DBP"], registro["BLDS"],
-                                                            registro["tot_chole"], registro["gamma_GTP"], registro["SMK_stat_type_cd"],
-                                                            registro["DRK_YN"]))
+            # print(registro)
+            tabla.insert("", 0, text=registro["id"], values=(registro["sex"], registro["age"], registro["height"],
+                                                             registro["weight"], registro["sight_left"], registro["sight_right"],
+                                                             registro["SBP"], registro["DBP"], registro["BLDS"],
+                                                             registro["tot_chole"], registro["gamma_GTP"], registro["SMK_stat_type_cd"],
+                                                             registro["DRK_YN"]))
 
     def close_connection(self):
         self.client.close()

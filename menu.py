@@ -21,6 +21,8 @@ labelima = tkinter.Label(image=imagen)
 labelima.place(relx=0, rely=0, relwidth=1, relheight=1)
 
 # Funciones
+
+
 def CargarDatos():
     print("Cargando Datos")
     # colocar "start /B script.bat para no mostrar terminal"
@@ -42,27 +44,29 @@ def MostrarDatosMaria():
     database = MariaDB()
     database.mostrarDatos(ventana2.tabla)
 
+
 def MostrarGraficas():
     print("Mostrar Graficas")
-    ventana.destroy()
+    # ventana.destroy()
     database = Mongo()
 
     print('hola mundo')
     data = pd.DataFrame(list(database.collection.find()))
-    sex_num = data[['sex','gamma_GTP','DRK_YN']]
-    resultado = sex_num.groupby(['sex','DRK_YN']).agg({'gamma_GTP': 'mean'}).reset_index()
-    tabla = sn.barplot(x= "sex", y="gamma_GTP", hue='DRK_YN', data=resultado)
+    sex_num = data[['sex', 'gamma_GTP', 'DRK_YN']]
+    resultado = sex_num.groupby(['sex', 'DRK_YN']).agg(
+        {'gamma_GTP': 'mean'}).reset_index()
+    tabla = sn.barplot(x="sex", y="gamma_GTP", hue='DRK_YN', data=resultado)
     plt.show()
     print('ssssssssssssss')
-    marcador = ['x','*','.','|','_']
+    marcador = ['x', '*', '.', '|', '_']
     for segmento in range(4):
-      temp = data[data['SMK_stat_type_cd'] == segmento]
-      plt.scatter(temp.SBP, temp.tot_chole, marker=marcador[segmento], label = 'Cluster '+str(segmento))
-      plt.xlabel('SBP')
-      plt.ylabel('tot_chole')
-      plt.legend()
+        temp = data[data['SMK_stat_type_cd'] == segmento]
+        plt.scatter(temp.SBP, temp.tot_chole,
+                    marker=marcador[segmento], label='Cluster '+str(segmento))
+        plt.xlabel('SBP')
+        plt.ylabel('tot_chole')
+        plt.legend()
     plt.show()
-    
 
 
 def MostrarDatosDynamo():
@@ -150,18 +154,6 @@ boton0 = tkinter.Button(
 )
 boton0.place(relx=0.15, rely=0.20, relwidth=0.3, relheight=0.25)
 
-boton1 = tkinter.Button(
-    ventana,
-    text="Estadisticas",
-    font="helvetica 15",
-    foreground="black",
-    width=10,
-    height=3,
-    command=CargarDatos,
-    bg="gold",
-)
-boton1.place(relx=0.55, rely=0.20, relwidth=0.3, relheight=0.25)
-
 boton2 = tkinter.Button(
     ventana,
     text="Datos\nMariaDB",
@@ -208,6 +200,6 @@ boton5 = tkinter.Button(
     command=MostrarGraficas,
     bg="turquoise",
 )
-boton5.place(relx=0.725, rely=0.90, relwidth=0.25, relheight=0.25)
+boton5.place(relx=0.55, rely=0.20, relwidth=0.3, relheight=0.25)
 
 ventana.mainloop()

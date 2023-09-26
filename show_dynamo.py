@@ -28,11 +28,5 @@ table.heading("#12", text="SMK_stat_type_cd")
 table.heading("#13", text="DRK_YN")
 for col in table["columns"]:
     table.column(col, width=50)
-for registro in database.get_items():
-    # print(registro)
-    table.insert("", 0, text=registro["id"], values=(registro["sex"], registro["age"], registro["height"],
-                                                     registro["weight"], registro["sight_left"], registro["sight_right"],
-                                                     registro["SBP"], registro["DBP"], registro["BLDS"],
-                                                     registro["tot_chole"], registro["gamma_GTP"], registro["SMK_stat_type_cd"],
-                                                     registro["DRK_YN"]))
+
 ventana_dynamo.mainloop()

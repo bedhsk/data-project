@@ -1,6 +1,9 @@
 from boto3 import resource
 from datetime import datetime
 
+import json
+from decimal import Decimal
+
 
 # Insertar datos en DynamoDb
 class Dynamo:
@@ -15,23 +18,28 @@ class Dynamo:
                SBP: float, DBP: float, BLDS: float, tot_chole: float, gamma_GTP: float, SMK_stat_type_cd: float,
                DRK_YN: str):
         print("Insertando datos en dynamo")
+
+        item = {  # elementos de la tabla
+            "id": id,  # partition key
+            "sex": sex,
+            "age": age,
+            "height": height,
+            "weight": weight,
+            "sight_left": sight_left,
+            "sight_right": sight_right,
+            "SBP": SBP,
+            "DBP": DBP,
+            "BLDS": BLDS,
+            "tot_chole": tot_chole,
+            "gamma_GTP": gamma_GTP,
+            "SMK_stat_type_cd": SMK_stat_type_cd,
+            "DRK_YN": DRK_YN,
+        }
+
+        item = json.loads(json.dumps(item), parse_float=Decimal)
+
         response = self.demo_table.put_item(
-            Item={  # elementos de la tabla
-                "id": id,  # partition key
-                "sex": sex,
-                "age": age,
-                "height": height,
-                "weight": weight,
-                "sight_left": sight_left,
-                "sight_right": sight_right,
-                "SBP": SBP,
-                "DBP": DBP,
-                "BLDS": BLDS,
-                "tot_chole": tot_chole,
-                "gamma_GTP": gamma_GTP,
-                "SMK_stat_type_cd": SMK_stat_type_cd,
-                "DRK_YN": DRK_YN,
-            }
+            Item=item
         )
         print(f"Insert response: {response}")
 
