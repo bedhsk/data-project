@@ -6,7 +6,7 @@ class MariaDB:
     def __init__(self) -> None:
         # TODO ->> Reemplazar database
         self.connection = mariadb.connect(
-            user="root", password="bbbbbbb7", host="localhost", database="datos_medicos"
+            user="root", password="powerranger12", host="localhost", database="datos_medicos"
         )
 
         if self.connection.is_connected():
