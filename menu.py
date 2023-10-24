@@ -1,5 +1,6 @@
 import tkinter
 import os
+import webbrowser
 from PIL import ImageTk, Image
 from matplotlib.markers import MarkerStyle
 from Ventana_mostrar import Ventana_mostrar
@@ -25,6 +26,12 @@ def CargarDatos():
     print("Cargando Datos")
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("start script.bat")
+
+def Server():
+    print("Cargando Datos")
+    # colocar "start /B script.bat para no mostrar terminal"
+    os.system("C:\pentaho-server\start-pentaho.bat")
+    webbrowser.open('https://docs.python.org/3/library/webbrowser.html')
 
 
 def MostrarDatosMongo():
@@ -92,7 +99,7 @@ boton0 = tkinter.Button(
     command=CargarDatos,
     bg="gold",
 )
-boton0.place(relx=0.15, rely=0.20, relwidth=0.25, relheight=0.20)
+boton0.place(relx=0.05, rely=0.20, relwidth=0.25, relheight=0.20)
 
 boton2 = tkinter.Button(
     ventana,
@@ -140,6 +147,18 @@ boton5 = tkinter.Button(
     command=MostrarGraficas,
     bg="#FFB000",
 )
-boton5.place(relx=0.55, rely=0.20, relwidth=0.25, relheight=0.20)
+boton5.place(relx=0.375, rely=0.20, relwidth=0.25, relheight=0.20)
+
+boton6 = tkinter.Button(
+    ventana,
+    text="Pentaho Server",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=Server,
+    bg="#FFB000",
+)
+boton6.place(relx=0.70, rely=0.20, relwidth=0.25, relheight=0.20)
 
 ventana.mainloop()
