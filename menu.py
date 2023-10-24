@@ -1,6 +1,7 @@
 import tkinter
 import os
 from PIL import ImageTk, Image
+from matplotlib.markers import MarkerStyle
 from Ventana_mostrar import Ventana_mostrar
 from modules.mongo import Mongo
 from modules.mariadb import MariaDB
