@@ -15,7 +15,7 @@ def get_data():
         lector = csv.reader(data, delimiter=";", quotechar='"')
         for i, row in enumerate(lector):
             lectura = maria_base.cursor.lastrowid
-            print(i)
+
             if lectura is None:
                 lectura = 0
             else:
