@@ -12,11 +12,11 @@ import seaborn as sn
 
 # Ventana de Menu
 ventana = tkinter.Tk()
-ventana.geometry("800x500")
+ventana.geometry("1200x500")
 ventana.title("PROYECTO - ANÁLISIS DE DATOS")
 
 # Redimension de imagen
-imagen = ImageTk.PhotoImage(Image.open("img/Brian2.jpg").resize((800, 600)))
+imagen = ImageTk.PhotoImage(Image.open("img/Brian2.jpg").resize((1200, 600)))
 labelima = tkinter.Label(image=imagen)
 labelima.place(relx=0, rely=0, relwidth=1, relheight=1)
 
@@ -27,11 +27,13 @@ def CargarDatos():
     os.system("start script.bat")
 
 def Server():
-    print("Cargando Datos")
-    # colocar "start /B script.bat para no mostrar terminal"
     os.system("C:\pentaho-server\start-pentaho.bat")
-    webbrowser.open('https://docs.python.org/3/library/webbrowser.html')
 
+def ServerStop():
+    os.system("C:\pentaho-server\stop-pentaho.bat")
+
+def Web():
+    webbrowser.open('https://docs.python.org/3/library/webbrowser.html')
 
 def MostrarDatosMongo():
     print("Mostrando Datos MongoDB")
@@ -98,7 +100,7 @@ boton0 = tkinter.Button(
     command=CargarDatos,
     bg="gold",
 )
-boton0.place(relx=0.05, rely=0.20, relwidth=0.25, relheight=0.20)
+boton0.place(relx=0.02, rely=0.20, relwidth=0.20, relheight=0.20)
 
 boton2 = tkinter.Button(
     ventana,
@@ -110,7 +112,7 @@ boton2 = tkinter.Button(
     command=MostrarDatosMaria,
     bg='#EF9595',
 )
-boton2.place(relx=0.05, rely=0.60, relwidth=0.25, relheight=0.20)
+boton2.place(relx=0.02, rely=0.60, relwidth=0.20, relheight=0.20)
 
 boton3 = tkinter.Button(
     ventana,
@@ -122,7 +124,7 @@ boton3 = tkinter.Button(
     command=MostrarDatosMongo,
     bg="turquoise",
 )
-boton3.place(relx=0.375, rely=0.60, relwidth=0.25, relheight=0.20)
+boton3.place(relx=0.25, rely=0.60, relwidth=0.20, relheight=0.20)
 
 boton4 = tkinter.Button(
     ventana,
@@ -134,7 +136,7 @@ boton4 = tkinter.Button(
     command=MostrarDatosDynamo,
     bg="#F8F0E5",
 )
-boton4.place(relx=0.70, rely=0.60, relwidth=0.25, relheight=0.20)
+boton4.place(relx=0.50, rely=0.60, relwidth=0.20, relheight=0.20)
 
 boton5 = tkinter.Button(
     ventana,
@@ -146,11 +148,11 @@ boton5 = tkinter.Button(
     command=MostrarGraficas,
     bg="#FFB000",
 )
-boton5.place(relx=0.375, rely=0.20, relwidth=0.25, relheight=0.20)
+boton5.place(relx=0.25, rely=0.20, relwidth=0.20, relheight=0.20)
 
 boton6 = tkinter.Button(
     ventana,
-    text="Pentaho Server",
+    text="Iniciar Pentaho",
     font="helvetica 15",
     foreground="black",
     width=10,
@@ -158,6 +160,30 @@ boton6 = tkinter.Button(
     command=Server,
     bg="#FFB000",
 )
-boton6.place(relx=0.70, rely=0.20, relwidth=0.25, relheight=0.20)
+boton6.place(relx=0.50, rely=0.20, relwidth=0.20, relheight=0.20)
+
+boton7 = tkinter.Button(
+    ventana,
+    text="Detener Pentaho",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=ServerStop,
+    bg="#FFB000",
+)
+boton7.place(relx=0.75, rely=0.20, relwidth=0.20, relheight=0.20)
+
+boton7 = tkinter.Button(
+    ventana,
+    text="Web",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=Web,
+    bg="#FFB000",
+)
+boton7.place(relx=0.75, rely=0.60, relwidth=0.20, relheight=0.20)
 
 ventana.mainloop()
