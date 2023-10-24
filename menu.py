@@ -1,5 +1,6 @@
 import tkinter
 import os
+import webbrowser
 from PIL import ImageTk, Image
 from Ventana_mostrar import Ventana_mostrar
 from modules.mongo import Mongo
@@ -29,6 +30,7 @@ def Server():
     print("Cargando Datos")
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("C:\pentaho-server\start-pentaho.bat")
+    webbrowser.open('https://docs.python.org/3/library/webbrowser.html')
 
 
 def MostrarDatosMongo():
