@@ -96,7 +96,7 @@ boton0 = tkinter.Button(
     command=CargarDatos,
     bg="gold",
 )
-boton0.place(relx=0.15, rely=0.20, relwidth=0.25, relheight=0.20)
+boton0.place(relx=0.05, rely=0.20, relwidth=0.25, relheight=0.20)
 
 boton2 = tkinter.Button(
     ventana,
@@ -144,7 +144,7 @@ boton5 = tkinter.Button(
     command=MostrarGraficas,
     bg="#FFB000",
 )
-boton5.place(relx=0.55, rely=0.20, relwidth=0.25, relheight=0.20)
+boton5.place(relx=0.375, rely=0.20, relwidth=0.25, relheight=0.20)
 
 boton6 = tkinter.Button(
     ventana,
