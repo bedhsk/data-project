@@ -25,6 +25,11 @@ def CargarDatos():
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("start script.bat")
 
+def Server():
+    print("Cargando Datos")
+    # colocar "start /B script.bat para no mostrar terminal"
+    os.system("C:\pentaho-server\start-pentaho.bat")
+
 
 def MostrarDatosMongo():
     print("Mostrando Datos MongoDB")
@@ -140,5 +145,17 @@ boton5 = tkinter.Button(
     bg="#FFB000",
 )
 boton5.place(relx=0.55, rely=0.20, relwidth=0.25, relheight=0.20)
+
+boton6 = tkinter.Button(
+    ventana,
+    text="Pentaho Server",
+    font="helvetica 15",
+    foreground="black",
+    width=10,
+    height=3,
+    command=Server,
+    bg="#FFB000",
+)
+boton6.place(relx=0.70, rely=0.20, relwidth=0.25, relheight=0.20)
 
 ventana.mainloop()
