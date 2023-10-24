@@ -33,7 +33,7 @@ def ServerStop():
     os.system("C:\pentaho-server\stop-pentaho.bat")
 
 def Web():
-    webbrowser.open('https://docs.python.org/3/library/webbrowser.html')
+    webbrowser.open('http://25.3.67.245:8080/pentaho/Home')
 
 def MostrarDatosMongo():
     print("Mostrando Datos MongoDB")
