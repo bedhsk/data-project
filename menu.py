@@ -10,6 +10,9 @@ from modules.dynamo import Dynamo
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sn
+import rgraphic1
+import rgraphic2
+import keyboard
 
 # Ventana de Menu
 ventana = tkinter.Tk()
@@ -27,14 +30,18 @@ def CargarDatos():
     # colocar "start /B script.bat para no mostrar terminal"
     os.system("start script.bat")
 
+
 def Server():
     os.system("C:\pentaho-server\start-pentaho.bat")
+
 
 def ServerStop():
     os.system("C:\pentaho-server\stop-pentaho.bat")
 
+
 def Web():
     webbrowser.open('http://25.3.67.245:8080/pentaho/Home')
+
 
 def MostrarDatosMongo():
     print("Mostrando Datos MongoDB")
@@ -53,6 +60,11 @@ def MostrarDatosMaria():
 
 
 def MostrarGraficas():
+    # MostrarGraficasPython()
+    MostrarGraficasR()
+
+
+def MostrarGraficasPython():
     print("Mostrar Graficas")
     # ventana.destroy()
     database = Mongo()
@@ -72,6 +84,11 @@ def MostrarGraficas():
         plt.ylabel('tot_chole')
         plt.legend()
     plt.show()
+
+
+def MostrarGraficasR():
+    rgraphic1.printRGraphic()
+    rgraphic2.printRGraphic()
 
 
 def MostrarDatosDynamo():
